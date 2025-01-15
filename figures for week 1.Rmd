@@ -1,0 +1,64 @@
+---
+title: "bio lab"
+author: "Sean Ramos"
+date: "2025-01-13"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+
+# the following code is created to use r programming to make professional study grade 
+library(readxl)
+library(tidyverse)
+library(ggtext)
+biolab <- read_excel("C:/Users/seanw/Downloads/biolabdata1A.xlsx")
+
+ggplot(biolab, aes(x= HCl_add, pH)) + 
+  geom_point()+ 
+  geom_line()+
+  labs( caption = paste0( "**Fig.1 -pH Titration of Tris Buffer**<br>",
+          "Tris buffer titration using 1 molar HCl with a target pH of 9.3. As HCL was added the resulting pH was measured"),
+        x = "1 M HCl Added (μL)")+
+  theme_bw()+
+  theme(
+    plot.caption = element_markdown(size = 10, hjust = 0, margin = margin(t = 10)),
+    plot.caption.position = "plot"
+  )
+
+```
+
+```{r}
+library(gt)
+table1 <- read_excel("C:/Users/seanw/Downloads/table1 week 1 atp 3.xlsx")
+
+table1 %>%
+  gt()%>%
+  tab_header(
+    title = "0.1 M Tris"
+  )%>%
+  tab_spanner(
+    label = "NaOH",
+    columns = c('Inititial_pH_o','Final_pH_o', 'Initial_HA_o','Final_HA_o')
+  )%>%
+  tab_spanner(
+    label = "HCl",
+    columns = c('Initial_pH_cl','Final_pH_cl','Initial_HA_cl','Final_HA_cl')
+  )%>%
+  cols_label(
+    Inititial_pH_o = "Initial pH",
+    Final_pH_o = "Final pH",
+    Initial_HA_o = "Initial [HA]",
+    Final_HA_o = " Final [HA]",
+    Initial_pH_cl = "Initial pH",
+    Final_pH_cl = "Final pH",
+    Initial_HA_cl = "Initial [HA]",
+    Final_HA_cl = "Initial [HA]"
+  )%>%
+  tab_footnote(
+    footnote = md(paste0("**Table 1 - Tris Buffering Capacity**<br>", "Three samples of 0.1 M Tris buffer with different pH were divided into two test tubes each. Each pH level had a test tube where 500 μL of NaOH was added, and the other test tube had 500 μL of HCl added. The initial and resulting pH were measured, along with the calculated concentration of [Ha]"))
+  )
+```
+
+
