@@ -3,7 +3,6 @@ title: "First_Quarto_File.qmd"
 author: "Sean Ramos"
 format: html
 editor: visual
-
 ---
 
 # Who would have won the Simon-Ehrlich bet over different decades, and what do long-term prices tell us about resource scarcity?
@@ -24,7 +23,7 @@ plot(1:20)
 
 ```
 
----
+------------------------------------------------------------------------
 
 # 
 
