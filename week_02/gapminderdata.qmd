@@ -1,0 +1,31 @@
+---
+title: "gapminder"
+author: "Sean Ramos"
+format: html
+editor: visual
+---
+
+## Gap Minder Data Analysis
+
+The following chart comes from the gap minder data set and shows the welfare of countries through out the years. It high lights the positive trends going on i the world.
+
+```{r}
+library(tidyverse)
+library(gapminder)
+
+gapminder_c <- gapminder %>%
+  filter(country != "Kuwait")
+
+ggplot(gapminder_c, aes( x = lifeExp, y = gdpPercap, size = pop, colour = continent)) + 
+  scale_y_continuous(trans = "sqrt") +
+  geom_point()+
+  facet_wrap(~year, nrow = 1)+
+  labs(title="Global Welfare Trends", x = "Life Expectancy", y = "GDP per Capita")+
+  theme_bw()+
+    guides(
+    size = guide_legend(title = "Population (100K)"),  # Custom title for size legend
+    color = guide_legend(title = "Continent")  # Custom title for color legend
+  )
+
+
+```
