@@ -22,9 +22,13 @@ ggplot(gapminder_c, aes( x = lifeExp, y = gdpPercap, size = pop, colour = contin
   facet_wrap(~year, nrow = 1)+
   labs(title="Global Welfare Trends", x = "Life Expectancy", y = "GDP per Capita")+
   theme_bw()+
+  scale_size_continuous(
+    name = "Population (100K)",  
+    labels = scales::label_number(scale = 1e-5, accuracy = 0.1)  
+  ) +
     guides(
-    size = guide_legend(title = "Population (100K)"),  # Custom title for size legend
-    color = guide_legend(title = "Continent")  # Custom title for color legend
+    size = guide_legend(title = "Population (100K)"),  
+    color = guide_legend(title = "Continent")  
   )
 
 
