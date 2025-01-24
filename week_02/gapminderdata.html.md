@@ -11,11 +11,16 @@ format:
     code-tools: true
 ---
 
+
+
 ## Gap Minder Data Analysis
 
 The following chart comes from the gap minder data set and shows the welfare of countries through out the years. It high lights the positive trends going on i the world.
 
-```{r}
+
+::: {.cell}
+
+```{.r .cell-code}
 library(tidyverse)
 library(gapminder)
 
@@ -36,6 +41,9 @@ ggplot(gapminder_c, aes( x = lifeExp, y = gdpPercap, size = pop, colour = contin
     size = guide_legend(title = "Population (100K)"),  
     color = guide_legend(title = "Continent")  
   )
-
-
 ```
+
+::: {.cell-output-display}
+![](gapminderdata_files/figure-html/unnamed-chunk-1-1.png){width=672}
+:::
+:::
