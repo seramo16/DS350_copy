@@ -11,8 +11,10 @@ format:
     code-tools: true
 ---
 
-```{r}
 
+::: {.cell}
+
+```{.r .cell-code}
 library(tidyverse)
 library(gapminder)
 
@@ -52,6 +54,9 @@ ggplot() +
     color = guide_legend(title = "Continent")  
   )+
   labs(title = "GDP Growth Across The World", x = "years", y = "GDP Per Capita")
-  
-
 ```
+
+::: {.cell-output-display}
+![](jan21gdpgrowthacrosstheworld_files/figure-html/unnamed-chunk-1-1.png){width=672}
+:::
+:::
