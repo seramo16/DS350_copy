@@ -1,5 +1,7 @@
 ---
 ---
+
+
 title: "Quarto Project"
 author: "Sean Ramos"
 date: "2025-01-24"
@@ -10,6 +12,7 @@ format:
   html:
     code-fold: true
     code-tools: true
+
 ---
 
 # Who would have won the Simon-Ehrlich bet over different decades, and what do long-term prices tell us about resource scarcity?
