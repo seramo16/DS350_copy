@@ -1,0 +1,46 @@
+---
+title: "Stock Data"
+author: "Sean Ramos"
+editor: visual
+execute:
+  keep-md: true
+  warning: false
+format:
+  html:
+    code-fold: true
+    code-tools: true
+---
+
+## DOW
+
+The Following table was made
+
+```{r}
+library(tidyverse)
+library(readr)
+library(readxl)
+library(stringr)
+library(gt)
+
+Dow <- read_excel("C:/Users/seanw/Downloads/Dart_Expert_Dow_6month_anova.xlsx")
+
+#data <- separate(data, combined, into = c("fruit1", "fruit2"), sep = "_")
+
+Dow_2 <- Dow %>%
+  separate(contest_period, into = c("start","end"), sep = "-")
+
+Dow_3 <- Dow_2 %>%
+  mutate(end_month = substr(end, 1, nchar(end) - 4), 
+         end_year = substr(end, nchar(end) - 3, nchar(end)))  %>%
+  filter(variable == "DJIA")
+Dow_4 <- Dow_3 %>%
+  select(end_month,
+         end_year,
+         value)
+Dow_5 <- Dow_4 %>%
+  pivot_wider(
+    names_from = end_year, 
+    values_from = value
+  )
+gt(Dow_5)
+```
